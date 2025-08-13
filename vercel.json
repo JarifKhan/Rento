@@ -1,0 +1,15 @@
+{
+  "name": "rento",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
+  "regions": ["iad1"],
+  "env": {},
+  "ignoreCommand": "echo 'Using Git ignore'"
+}
