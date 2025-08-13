@@ -10,6 +10,5 @@
     }
   },
   "regions": ["iad1"],
-  "env": {},
-  "ignoreCommand": "echo 'Using Git ignore'"
+  "env": {}
 }
