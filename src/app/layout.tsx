@@ -24,14 +24,14 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "NOTUN THIKANA - Your Complete Lifestyle Management Platform",
+  title: "RENTO - Your Complete Lifestyle Management Platform",
   description: "Find nearby services, rent houses, connect with community, and manage your daily life with ease. Developed by dot PY Nexa.",
   keywords: "lifestyle management, local services, property rental, community, Bangladesh, Dhaka",
   authors: [{ name: "dot PY Nexa" }],
   creator: "dot PY Nexa",
   publisher: "dot PY Nexa",
   openGraph: {
-    title: "NOTUN THIKANA - Your Complete Lifestyle Management Platform",
+    title: "RENTO - Your Complete Lifestyle Management Platform",
     description: "Find nearby services, rent houses, connect with community, and manage your daily life with ease.",
     type: "website",
     locale: "en_US",
