@@ -8,6 +8,23 @@ const PropertiesPage = () => {
   const [selectedType, setSelectedType] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
 
+  // Type describing a property card on this page
+  interface Property {
+    id: number;
+    title: string;
+    location: string;
+    price: string; // numeric as string, e.g. "25,000"
+    type: 'apartment' | 'house' | 'studio' | 'penthouse' | string;
+    bedrooms: number;
+    bathrooms: number;
+    area: number; // in sqft
+    rating: number;
+    reviews: number;
+    image: string;
+    features: string[];
+    isAvailable: boolean;
+  }
+
   // const properties = [
   //   {
   //     id: 1,
@@ -56,7 +73,8 @@ const PropertiesPage = () => {
   //   }
   // ];
 
-  const properties = []
+  // TODO: replace with real data source
+  const properties: Property[] = []
 
   const propertyTypes = [
     { value: 'all', label: 'All Types' },
