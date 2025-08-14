@@ -50,8 +50,10 @@ export async function POST(req: NextRequest) {
 
     const result = await col.insertOne(doc);
     return NextResponse.json({ ok: true, id: result.insertedId, property: doc });
-  } catch (err) {
+  } catch (err: unknown) {
+    let message = 'Internal Server Error';
+    if (err instanceof Error) message = err.message;
     console.error('POST /api/admin/properties error', err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
