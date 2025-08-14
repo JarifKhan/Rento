@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCollection } from '@/lib/mongodb';
+import type { Document } from 'mongodb';
 
-interface Notification {
+interface Notification extends Document {
   id: number;
   user_id: number;
   type: 'message' | 'event' | 'user' | string;

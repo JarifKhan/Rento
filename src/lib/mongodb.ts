@@ -1,7 +1,6 @@
-import { MongoClient, Db } from 'mongodb';
+import { MongoClient, Db, Document, Collection } from 'mongodb';
 
 declare global {
-  // eslint-disable-next-line no-var
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
@@ -31,7 +30,7 @@ export async function getDb(): Promise<Db> {
   return c.db(dbName);
 }
 
-export async function getCollection<T = any>(name: string) {
+export async function getCollection<T extends Document = Document>(name: string): Promise<Collection<T>> {
   const db = await getDb();
   return db.collection<T>(name);
 }
