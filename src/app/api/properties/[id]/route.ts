@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCollection } from "@/lib/mongodb";
-import { ObjectId } from "mongodb";
+import { ObjectId } from "bson";
 
 export async function GET(
 	req: NextRequest,
-	context: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
-		const { id } = context.params;
+		const { id } = await params; // 👈 await it!
 
 		if (!id) {
 			return NextResponse.json(
@@ -18,7 +18,6 @@ export async function GET(
 
 		const col = await getCollection("properties");
 
-		// Try to find by MongoDB ObjectId first, then by custom id field
 		let property;
 
 		if (ObjectId.isValid(id)) {
@@ -26,7 +25,6 @@ export async function GET(
 		}
 
 		if (!property) {
-			// Try finding by custom id field (numeric)
 			const numericId = parseInt(id);
 			if (!isNaN(numericId)) {
 				property = await col.findOne({ id: numericId });
