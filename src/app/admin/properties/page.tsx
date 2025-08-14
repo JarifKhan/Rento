@@ -39,8 +39,15 @@ export default function AdminPropertiesPage() {
       if (!res.ok) throw new Error(data.error || 'Failed to add property');
       setMessage('Property added successfully');
       setForm({ title: '', location: '', price: '', type: 'apartment', bedrooms: 1, bathrooms: 1, area: 500, features: '' });
-    } catch (err: any) {
-      setMessage(err.message || 'Something went wrong');
+    } catch (err: unknown) {
+      let msg = 'Something went wrong';
+      if (err instanceof Error) {
+        msg = err.message;
+      } else if (typeof err === 'object' && err !== null && 'message' in err) {
+        const maybeMsg = (err as { message?: unknown }).message;
+        if (typeof maybeMsg === 'string') msg = maybeMsg;
+      }
+      setMessage(msg);
     } finally {
       setSubmitting(false);
     }
